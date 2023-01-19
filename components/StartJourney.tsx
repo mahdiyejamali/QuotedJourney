@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Notifications from 'expo-notifications';
-import { SafeAreaView } from 'react-native';
-import { Button, Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Platform, SafeAreaView } from 'react-native';
+import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
+import { Button, Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction, CheckBox } from '@ui-kitten/components';
 
 const BackIcon = (props: any) => (
   <Icon {...props} name='arrow-back' />
 );
 
 export const StartJourney = ({ navigation }: any) => {
+  // Navigation Home
   const navigateHome = () => {
     navigation.navigate('Home');
   };
@@ -15,6 +17,12 @@ export const StartJourney = ({ navigation }: any) => {
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateHome}/>
   );
+
+  const [date, setDate] = useState(new Date(1598051730000));
+  const onChange = (event: any, selectedDate: any) => {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+  };
 
   const startJourney = () => {
     Notifications.scheduleNotificationAsync({
@@ -41,6 +49,21 @@ export const StartJourney = ({ navigation }: any) => {
       
       <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text category='h1'>Start My Journey</Text>
+        <Divider />
+
+        <CheckBox>Send me reminders</CheckBox>
+        {/* <Button onPress={showDatepicker}>Show date picker!</Button>
+        <Button onPress={showTimepicker}>Show time picker!</Button> */}
+        <Text>selected: {date.toLocaleString()}</Text>
+        <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={'time'}
+            is24Hour
+            onChange={onChange}
+        />
+        <Divider />
+
         <Button onPress={startJourney}>Schedule Notification</Button>
       </Layout>
     </SafeAreaView>

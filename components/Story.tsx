@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import {storyLines} from '../constants/story1';
 import * as Notifications from 'expo-notifications';
+import { Button } from '@ui-kitten/components';
+
 
 export default function Story() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -67,8 +69,8 @@ export default function Story() {
                 <Text>{storyLines[5]}</Text>
             </Pressable>}
 
-            <Button title='Read Again' onPress={() => setCurrentPage(1)}  />
-            <Button title='Start My Journey' onPress={startJourney} />
+            <Button onPress={() => setCurrentPage(1)}>Read Again</Button>
+            <Button onPress={startJourney}>Start My Journey</Button>
     </View>
     );
 }

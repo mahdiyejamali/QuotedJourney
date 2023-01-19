@@ -1,17 +1,21 @@
-import { StyleSheet, View } from 'react-native';
-import Story from './components/Story';
+import React, { useEffect } from 'react';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry, Layout, Button } from '@ui-kitten/components';
+import { default as theme } from './theme.json'; // <-- Import app theme
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { AppNavigator } from './components/HomeNavigator';
+
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
-import { useEffect } from 'react';
 
 Notifications.setNotificationHandler({
-    handleNotification: async () => {
-        return {
-            shouldPlaySound: true,
-            shouldSetBadge: true,
-            shouldShowAlert: true,
-        };
-    }
+  handleNotification: async () => {
+      return {
+          shouldPlaySound: true,
+          shouldSetBadge: true,
+          shouldShowAlert: true,
+      };
+  }
 });
 
 export default function App() {
@@ -48,17 +52,12 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Story />
-    </View>
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
+        <AppNavigator/>
+      </ApplicationProvider>
+    </>
   );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+}

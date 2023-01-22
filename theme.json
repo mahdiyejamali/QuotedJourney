@@ -64,5 +64,30 @@
   "color-basic-transparent-500": "rgba(128, 128, 128, 0.4)",
   "color-basic-transparent-600": "rgba(128, 128, 128, 0.48)",
 
-  "text-basic-color": "$color-basic-400"
+  "color-primary-focus": "$color-primary-700",
+  "color-primary-hover": "$color-primary-400",
+  "color-primary-default": "$color-primary-500",
+  "color-primary-active": "$color-primary-600",
+  "color-primary-disabled": "$color-primary-300",
+
+  "background-basic-color-1": "$color-basic-100",
+  "background-basic-color-2": "$color-basic-200",
+  "background-basic-color-3": "$color-basic-300",
+  "background-basic-color-4": "$color-basic-400",
+
+  "border-basic-color-1": "$color-basic-100",
+  "border-basic-color-2": "$color-basic-200",
+  "border-basic-color-3": "$color-basic-300",
+  "border-basic-color-4": "$color-basic-400",
+  "border-basic-color-5": "$color-basic-500",
+
+  "text-basic-color": "$color-basic-1000",
+  "text-alternate-color": "$color-basic-100",
+  "text-control-color": "$color-basic-100",
+  "text-disabled-color": "$color-basic-500",
+  "text-hint-color": "$color-basic-700",
+
+  "fontSize": 12,
+  "fontWeight": "400",
+  "text-caption-line-height": 16
 }

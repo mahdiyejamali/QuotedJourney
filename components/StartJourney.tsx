@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import * as Notifications from 'expo-notifications';
 import { Platform, SafeAreaView } from 'react-native';
-import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
+// import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { Button, Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction, CheckBox } from '@ui-kitten/components';
+// import { Timepicker } from './TimePicker';
 
 const BackIcon = (props: any) => (
   <Icon {...props} name='arrow-back' />
@@ -55,13 +56,19 @@ export const StartJourney = ({ navigation }: any) => {
         {/* <Button onPress={showDatepicker}>Show date picker!</Button>
         <Button onPress={showTimepicker}>Show time picker!</Button> */}
         <Text>selected: {date.toLocaleString()}</Text>
-        <DateTimePicker
+        {/* <DateTimePicker
             testID="dateTimePicker"
             value={date}
             mode={'time'}
             is24Hour
             onChange={onChange}
-        />
+        /> */}
+        {/* <Timepicker
+          onSelect={date => console.log(date) }
+          // value={date}
+          // is24Hour
+          // onChange={onChange}
+        /> */}
         <Divider />
 
         <Button onPress={startJourney}>Schedule Notification</Button>

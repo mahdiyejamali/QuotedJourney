@@ -1,11 +1,21 @@
 import { useState } from 'react';
-import { StyleSheet, Pressable, Image, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import { Button, Layout, Icon, TopNavigationAction, TopNavigation, Divider } from '@ui-kitten/components';
+
 import { storyLines } from '../constants/story1';
-import { Button, Layout, Text, Icon, TopNavigationAction, TopNavigation, Divider } from '@ui-kitten/components';
+import { StoryPage } from './StoryPage';
 
 const BackIcon = (props: any) => (
     <Icon {...props} name='arrow-back' />
 );
+
+const PAGE_IMAGE_MAP = {
+    1: require('../assets/story1/1.png'),
+    2: require('../assets/story1/2.png'),
+    3: require('../assets/story1/3.png'),
+    4: require('../assets/story1/4.png'),
+    5: require('../assets/story1/5.png'),
+}
 
 export const Story = ({ navigation }: any) => {
     // Navigation to back
@@ -35,45 +45,14 @@ export const Story = ({ navigation }: any) => {
             <Divider/>
 
             <Layout style={styles.container}>
-                {currentPage == 1 && <Pressable onPress={onPageClick}>
-                    <Image
-                        style={styles.storyPage}
-                        source={require("../assets/story1/1.png")}
+                {[1, 2, 3, 4, 5].map((pageNumber) => {                    
+                    return currentPage == pageNumber && <StoryPage 
+                        key={pageNumber}
+                        onClick={onPageClick}
+                        source={PAGE_IMAGE_MAP[pageNumber]}
+                        text={storyLines[pageNumber]}
                     />
-                    <Text>{storyLines[1]}</Text>
-                </Pressable>}
-
-                {currentPage == 2 && <Pressable onPress={onPageClick}>
-                    <Image
-                        style={styles.storyPage}
-                        source={require("../assets/story1/2.png")}
-                    />
-                    <Text>{storyLines[2]}</Text>
-                </Pressable>}
-
-                {currentPage == 3 && <Pressable onPress={onPageClick}>
-                    <Image
-                        style={styles.storyPage}
-                        source={require("../assets/story1/3.png")}
-                    />
-                    <Text>{storyLines[3]}</Text>
-                </Pressable>}
-
-                {currentPage == 4 && <Pressable onPress={onPageClick}>
-                    <Image
-                        style={styles.storyPage}
-                        source={require("../assets/story1/4.png")}
-                    />
-                    <Text>{storyLines[4]}</Text>
-                </Pressable>}
-
-                {currentPage == 5 && <Pressable onPress={onPageClick}>
-                    <Image
-                        style={styles.storyPage}
-                        source={require("../assets/story1/5.png")}
-                    />
-                    <Text>{storyLines[5]}</Text>
-                </Pressable>}
+                })}
 
                 {currentPage > LAST_PAGE && 
                     <>
@@ -89,10 +68,6 @@ export const Story = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1, justifyContent: 'center', alignItems: 'center'
-  },
-  storyPage: {
-    width: 350,
-    height: 350,
   },
 });
   

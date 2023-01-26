@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, ImageSourcePropType } from 'react-native';
-import { Button, Layout, Icon, TopNavigationAction, TopNavigation, Divider } from '@ui-kitten/components';
+import { Layout, Icon, TopNavigationAction, TopNavigation, Divider } from '@ui-kitten/components';
 
-import { storyLines } from '../constants/story1';
 import { QuotePage } from './QuotePage';
 
 import api from '../api';
@@ -10,14 +9,6 @@ import api from '../api';
 const BackIcon = (props: any) => (
     <Icon {...props} name='home' />
 );
-
-const PAGE_IMAGE_MAP: {[key: number]: ImageSourcePropType} = {
-    1: require('../assets/story1/1.png'),
-    2: require('../assets/story1/2.png'),
-    3: require('../assets/story1/3.png'),
-    4: require('../assets/story1/4.png'),
-    5: require('../assets/story1/5.png'),
-}
 
 export const QuoteDisplay = ({ route, navigation }: any) => {
     const { tags, ...otherParams } = route.params;
@@ -59,7 +50,6 @@ export const QuoteDisplay = ({ route, navigation }: any) => {
                 <QuotePage 
                     key={currentPage.toString()}
                     onClick={onPageClick}
-                    source={PAGE_IMAGE_MAP[1]}
                     text={currentQuote}
                     topics={[]}
                 />

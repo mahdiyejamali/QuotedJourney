@@ -1,12 +1,11 @@
 {
   "expo": {
-    "name": "MyMindfulJourney",
-    "slug": "MyMindfulJourney",
+    "name": "QuotedJourney",
+    "slug": "QuotedJourney",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#123456",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

@@ -1,4 +1,4 @@
-export const storyLines = {
+export const storyLines: {[key: number]: string} = {
     1: 'First Page...',
     2: 'Second Page...',
     3: 'Third Page...',
